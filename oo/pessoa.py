@@ -1,4 +1,5 @@
 class Pessoa:
+    olhos = 2  # atributo de classe == default
     def __init__(self, *filho, nome=None, idade=39):
         self.filho = list(filho)
         self.nome = nome
@@ -35,3 +36,10 @@ if __name__ == '__main__':
     del emanoel.filho  # removendo atributo dinamicamente
     print(emanoel.__dict__)  # dict mostra todos os atributos
     print(edgar.__dict__)
+    Pessoa.olhos = 5  # mudando o atributo da classe inteira
+    print(Pessoa.olhos)  # atributo de classe
+    print(edgar.olhos)  # atributo de classe
+    emanoel.olhos = 1  # atributo de objeto
+    print(emanoel.olhos)  # virou atributo de objeto
+    print(id(emanoel.olhos), id(edgar.olhos), id(Pessoa.olhos))  # id ficou diferente em emanoel.olhos
+    Pessoa.olhos = 5
