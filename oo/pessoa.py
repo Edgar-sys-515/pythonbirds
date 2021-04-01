@@ -29,4 +29,9 @@ if __name__ == '__main__':
     for filhos in emanoel.filho:
         print(filhos.nome)
 
-
+    emanoel.sobrenome = "Mendes"  # criando atributo dinamicamente
+    print(emanoel.sobrenome)
+    # print(edgar.sobrenome) vai dar erro de edgar nao possuir objeto sobrenome
+    del emanoel.filho  # removendo atributo dinamicamente
+    print(emanoel.__dict__)  # dict mostra todos os atributos
+    print(edgar.__dict__)
