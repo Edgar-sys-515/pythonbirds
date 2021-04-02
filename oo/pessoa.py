@@ -1,20 +1,31 @@
 class Pessoa:
     olhos = 2  # atributo de classe == default
+
     def __init__(self, *filho, nome=None, idade=39):
         self.filho = list(filho)
         self.nome = nome
         self.idade = idade
 
     def cumprimentar(self):
-        return "Olá"
+        return f"Olá{id(self)}"
+
+
+    @staticmethod
+    def metodo_estatico():
+        return 23 + 44
+
+    @classmethod
+    def nome_e_atributos_de_classe(cls):
+        return f"{cls} Olhos {cls.olhos}"
+
 
 
 if __name__ == '__main__':
     edgar = Pessoa(nome="Edgar")
     emanoel = Pessoa(edgar, nome="Emanoel")
 
-    # print(Pessoa.cumprimentar(p))
-    # print(edgar.cumprimentar())
+    print(Pessoa.cumprimentar(edgar))
+    print(edgar.cumprimentar())
 
     # Edgar = Pessoa()
     # print(Pessoa.cumprimentar(Edgar))
@@ -42,4 +53,8 @@ if __name__ == '__main__':
     emanoel.olhos = 1  # atributo de objeto
     print(emanoel.olhos)  # virou atributo de objeto
     print(id(emanoel.olhos), id(edgar.olhos), id(Pessoa.olhos))  # id ficou diferente em emanoel.olhos
-    Pessoa.olhos = 5
+    # Pessoa.olhos = 5
+    print(Pessoa.metodo_estatico(), edgar.metodo_estatico())
+    print(Pessoa.nome_e_atributos_de_classe())
+    print(edgar.nome_e_atributos_de_classe())
+    print(emanoel.nome_e_atributos_de_classe(), ",", emanoel.olhos)
