@@ -18,12 +18,15 @@ class Pessoa:
     def nome_e_atributos_de_classe(cls):
         return f"{cls} Olhos {cls.olhos}"
 
+class Homem(Pessoa):
+    pass
 
 
 if __name__ == '__main__':
-    edgar = Pessoa(nome="Edgar")
-    emanoel = Pessoa(edgar, nome="Emanoel")
-
+    # edgar = Pessoa(nome="Edgar")
+    edgar = Homem(nome="Edgar")
+    # emanoel = Pessoa(edgar, nome="Emanoel")
+    emanoel = Homem(nome="Emanoel")
     print(Pessoa.cumprimentar(edgar))
     print(edgar.cumprimentar())
 
@@ -58,3 +61,8 @@ if __name__ == '__main__':
     print(Pessoa.nome_e_atributos_de_classe())
     print(edgar.nome_e_atributos_de_classe())
     print(emanoel.nome_e_atributos_de_classe(), ",", emanoel.olhos)
+    pessoa = Pessoa("Anonimo", nome="Sem")
+    print(isinstance(pessoa, Pessoa))
+    print(isinstance(pessoa, Homem))
+    print(isinstance(edgar, Homem))
+    print(isinstance(edgar, Pessoa))
