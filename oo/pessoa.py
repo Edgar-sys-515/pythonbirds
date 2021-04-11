@@ -7,7 +7,7 @@ class Pessoa:
         self.idade = idade
 
     def cumprimentar(self):
-        return f"Olá{id(self)}"
+        return f"Olá, meu nome é {self.nome}"
 
 
     @staticmethod
@@ -18,13 +18,20 @@ class Pessoa:
     def nome_e_atributos_de_classe(cls):
         return f"{cls} Olhos {cls.olhos}"
 
+
 class Homem(Pessoa):
-    pass
+    def cumprimentar(self):
+        cumprimentar_da_classe = super().cumprimentar()  # super () vai se referir a classe pai
+        return f'{cumprimentar_da_classe}. Aperto de mão'
+
+
+class Mutante(Pessoa):
+    olhos = 3
 
 
 if __name__ == '__main__':
     # edgar = Pessoa(nome="Edgar")
-    edgar = Homem(nome="Edgar")
+    edgar = Mutante(nome="Edgar")
     # emanoel = Pessoa(edgar, nome="Emanoel")
     emanoel = Homem(nome="Emanoel")
     print(Pessoa.cumprimentar(edgar))
@@ -50,7 +57,7 @@ if __name__ == '__main__':
     del emanoel.filho  # removendo atributo dinamicamente
     print(emanoel.__dict__)  # dict mostra todos os atributos
     print(edgar.__dict__)
-    Pessoa.olhos = 5  # mudando o atributo da classe inteira
+    # Pessoa.olhos = 5  # mudando o atributo da classe inteira
     print(Pessoa.olhos)  # atributo de classe
     print(edgar.olhos)  # atributo de classe
     emanoel.olhos = 1  # atributo de objeto
@@ -66,3 +73,8 @@ if __name__ == '__main__':
     print(isinstance(pessoa, Homem))
     print(isinstance(edgar, Homem))
     print(isinstance(edgar, Pessoa))
+    print(edgar.olhos)
+    print(emanoel.olhos)
+    print(edgar.cumprimentar())
+    print(emanoel.cumprimentar())
+
